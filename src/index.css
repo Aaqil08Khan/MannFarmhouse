@@ -1,0 +1,79 @@
+@import url('https://googleapis.com');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 34 33% 96%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 123 27% 23%;
+    --primary-foreground: 34 33% 96%;
+    --secondary: 34 33% 90%;
+    --secondary-foreground: 123 27% 23%;
+    --muted: 30 12% 41%;
+    --muted-foreground: 30 12% 41%;
+    --accent: 37 46% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 34 20% 88%;
+    --input: 34 20% 88%;
+    --ring: 123 27% 23%;
+    --radius: 0.5rem;
+  }
+
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground font-body antialiased; }
+  h1, h2, h3, h4, h5, h6 { @apply font-display; }
+  html { scroll-behavior: smooth; }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28;
+  }
+
+  /* Combined WhatsApp Pulse - Uses pseudo-element for a cleaner look */
+  .whatsapp-pulse {
+    @apply relative z-10;
+  }
+
+  .whatsapp-pulse::before {
+    content: "";
+    @apply absolute inset-0 rounded-full bg-[#25D366] -z-10;
+    animation: whatsapp-ripple 2s infinite;
+  }
+
+  .bounce-arrow {
+    animation: bounce-arrow 2s infinite;
+  }
+
+  .noise-bg {
+    @apply relative;
+  }
+  
+  .noise-bg::before {
+    content: '';
+    @apply absolute inset-0 opacity-[0.03] pointer-events-none z-0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Centralized Keyframes */
+@keyframes whatsapp-ripple {
+  0% { transform: scale(1); opacity: 0.7; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes bounce-arrow {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(10px); }
+  60% { transform: translateY(5px); }
+}
