@@ -14,7 +14,7 @@ export default function WhatsAppButton() {
         <div className="whatsapp-pulse w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200">
   {/* Replace MessageCircle with this */}
   <img 
-    src="../public/assets/icons/whatsapp.svg" 
+    src="/assets/icons/whatsapp.svg" 
     alt="WhatsApp" 
     className="w-8 h-8" 
   />
